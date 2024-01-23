@@ -1,5 +1,4 @@
 function [pascals] = dbToPascals(dB_SPL)
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % pascals = dbToPascals(dB_SPL)
 % A function for converting pressure in dB SPL to Pascals
@@ -8,6 +7,5 @@ function [pascals] = dbToPascals(dB_SPL)
 % Author: Valerie Ingalls
 % Created 1/23/2024
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    pascals = 0.00002 * 10^(dB_SPL / 20);
+    pascals = 0.00002 * 10^(dB_SPL / 20); % apply formula for unit conversion
 end

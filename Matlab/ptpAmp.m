@@ -1,5 +1,4 @@
 function [amplitude] = ptpAmp(X)
-
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % amplitude = ptpAmp(X)
 % A function to calculate peak to peak amplitude of vector X, i.e. the
@@ -9,7 +8,6 @@ function [amplitude] = ptpAmp(X)
 % Author: Valerie Ingalls
 % Created 1/23/2024
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
     peak1 = max(X); % find the largest value in X
     peak2 = min(X); % find the smallest value in X
     amplitude = peak1 - peak2; % obtain the distance between them
