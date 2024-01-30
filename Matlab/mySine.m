@@ -20,4 +20,12 @@ function [wave, time] = mySine(amplitude, frequency, phase, duration)
     n = (0:1:N-1).'; % generate index for all needed samples
     time = n .* samplingPeriod; % multiply index by period to give timestamp for each sample
     wave = amplitude*sin(2*pi*frequency*time + phase); % calculate wave value at each time
+
+    plot(time, wave)
+    cycles = 5;
+    xlim([0,cycles/frequency]);
+    ylabel("Amplitude")
+    xlabel("Time (sec)")
+
+    soundsc(wave, samplingRate);
 end
