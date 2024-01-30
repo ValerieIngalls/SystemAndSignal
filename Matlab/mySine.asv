@@ -1,0 +1,13 @@
+function [wave, time] = mySine(amplitude, frequency, phase, duration)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% mySine(amplitude, frequency, phase, duration) = [wave, time]
+% Generates a waveform sampled at 22050 Hz with the given parameters
+% Inputs: amplitude (max amplitude of the waveform
+%         
+    samplingRate = 22050; % adjustable sampling rate
+    samplingPeriod = 1/samplingRate; % period is inverse of frequency
+    N = round(duration*samplingRate); % number of samples needed
+    n = (0:1:N-1).'; % generate index for all needed samples
+    time = n .* samplingPeriod; % multiply index by period to give timestamp for each sample
+    wave = amplitude*sin(2*pi*frequency*time + phase); % calculate wave value at each time
+end
