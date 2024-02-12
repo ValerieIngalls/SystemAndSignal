@@ -14,7 +14,7 @@ function [wave, time] = mySine(amplitude, frequency, phase, duration)
 % Author: Valerie Ingalls
 % Created 1/30/2024
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    samplingRate = 22050; % adjustable sampling rate
+    samplingRate = 44100; % adjustable sampling rate
     samplingPeriod = 1/samplingRate; % period is inverse of frequency
     N = round(duration*samplingRate); % number of samples needed
     n = (0:1:N-1).'; % generate index for all needed samples
