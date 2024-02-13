@@ -2,7 +2,7 @@ function [wave, time] = mySine(amplitude, frequency, phase, duration)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % mySine(amplitude, frequency, phase, duration) = [wave, time]
 %
-% Generates a waveform sampled at 22050 Hz with the given parameters
+% Generates a waveform sampled at 44100 Hz with the given parameters
 % 
 % Inputs: amplitude (peak amplitude of the waveform
 %         frequency (frequency of the sinusoid NOT SAMPLING RATE; Hz)
