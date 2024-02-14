@@ -1,5 +1,19 @@
 function [gainMat] = characterize(system, resolution)
-    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% gainMat = characterize(system, [resolution])
+% Runs tests on a predefined system from System & Signal class to determine
+% homogeneity. Yields four plots and measures of gain in the system.
+% Inputs:
+%       system - an integer 1-4; controls which system is being examined
+%       resolution - an optional input that controls the dB step size used
+%           in the test amplitudes. Defaults to a 1 dB step size.
+% Output:
+%       gainMat - a 2xN matrix with values of the gain obtained from each
+%           test wave form (columns). Output for convenient reference
+%       Also creates I/O and Gain plots in both linear and log units
+% Author: Valerie Ingalls
+% Created 2/12/2024
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if nargin < 2 % default value gives ease of use alongside flexibility
         resolution = 1;
     end
@@ -38,7 +52,7 @@ function [gainMat] = characterize(system, resolution)
     
     %%%%% Graphing %%%%%
     
-    x = 0:0.001:0.02; % for reference line
+    x = 0:0.001:0.015; % for reference line
     % Linear I/O
     figure
     plot(rmsInputPa, rmsOutputPa, x, x, '--')
@@ -60,7 +74,8 @@ function [gainMat] = characterize(system, resolution)
     title('Linear Gain')
     xlabel('Input RMS Amplitude (Pascals)')
     ylabel('Gain')
-    xlim([0 0.015]);
+    xlim([0 0.015])
+    ylim([.67*min(gainMat(1,:)), 1.5*max(gainMat(1,:))])
 
     % Log Gain
     figure
@@ -69,4 +84,5 @@ function [gainMat] = characterize(system, resolution)
     xlabel('Input RMS Amplitude (dB SPL)')
     ylabel('Gain (dB SPL)')
     xlim([0 60])
+    ylim([min(gainMat(2,:) - 5), max(gainMat(2,:)) + 5])
 end
