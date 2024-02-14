@@ -1,15 +1,16 @@
-function [gainMat] = characterize(system, resolution)
+function [gainMat] = testHomogeneity(system, resolution)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % gainMat = characterize(system, [resolution])
 % Runs tests on a predefined system from System & Signal class to determine
-% homogeneity. Yields four plots and measures of gain in the system.
+% homogeneity. Yields four plots and measures of gain across input amplitudes.
 % Inputs:
 %       system - an integer 1-4; controls which system is being examined
 %       resolution - an optional input that controls the dB step size used
-%           in the test amplitudes. Defaults to a 1 dB step size.
+%           to generate test amplitudes. Defaults to a 1 dB step size.
 % Output:
 %       gainMat - a 2xN matrix with values of the gain obtained from each
-%           test wave form (columns). Output for convenient reference
+%           test wave form (columns). Output for convenient reference. Row
+%           1 is Linear, row 2 is the dB conversion
 %       Also creates I/O and Gain plots in both linear and log units
 % Author: Valerie Ingalls
 % Created 2/12/2024
@@ -45,7 +46,9 @@ function [gainMat] = characterize(system, resolution)
     % calculate dB values
     rmsInputSPL = 20 * log10(rmsInputPa ./ 0.00002);
     rmsOutputSPL = 20 * log10(rmsOutputPa ./ 0.00002);
-
+    
+    % Gain as one matrix for simple output
+    % Want to output just for convenient spot checks
     gainMat(1, :) = rmsOutputPa ./ rmsInputPa;
     gainMat(2, :) = rmsOutputSPL - rmsInputSPL;
     
