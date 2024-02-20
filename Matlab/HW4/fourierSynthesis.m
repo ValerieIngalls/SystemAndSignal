@@ -21,6 +21,7 @@ if all(waveType == 1) || strcmp(waveType, 'square') % square wave
     harmonics = 1:2:nthHarmonic;
     amplitudes = 1 ./ harmonics;
     phase = -1*pi/2;
+    % -1*pi/2
     plotTitle = 'Square Wave';
 
 elseif all(waveType == 2) || strcmp(waveType, 'triangle') % triangle wave
@@ -45,10 +46,10 @@ yn = 0; % default value that will let us continue past the following checks if t
 
 if max(harmonicSeries) > 22050 % check if highest harmonic exceeds Nyquist rate; if yes, ask user if they want to continue or end
     yn = input(['Warning: Input parameters yield harmonics that exceed the Nyquist rate and may lead to aliasing.\n' ...
-        'Continue anyway? (Y/N) '], "s");
+        'Continue anyway? (Y/N) '], "s"); % user input, coerced to string
 end
 
-if strcmp(yn, 'N') || strcmp(yn, 'n') % early exit
+if strcmp(yn, 'N') || strcmp(yn, 'n') % early exit if users desires
     error('Function terminated early by user input. To ensure no aliasing issues, choose a fundamental frequency and highest harmonic that multiply to less than 22050.')
 end
 
