@@ -17,6 +17,8 @@ function [output] = fourierSynthesis(waveType, f0, nthHarmonic)
 % Author: Valerie Ingalls
 % Created 2/16/2024
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% wavetypes set up to all except a number or a string
 if all(waveType == 1) || strcmp(waveType, 'square') % square wave
     harmonics = 1:2:nthHarmonic;
     amplitudes = 1 ./ harmonics;
@@ -36,7 +38,7 @@ elseif all(waveType == 3) || strcmp(waveType, 'sawtooth') % sawtooth wave
     phase = -1*pi/2;
     plotTitle = 'Sawtooth Wave';
 
-else % error message and early exit if one of the above is not input
+else % error message and early exit if one of the correct wave options is not input
     error("Invalid waveform input. Please enter 1, 'square', 2, 'triangle', 3, or 'sawtooth'.")
 end
 
@@ -71,7 +73,7 @@ nCycles = 4;
 pauseLen = 5/nHarmonics;
 
 figure
-
+% meat of the harmonic calculations and synthesis
 for ii = 1:nHarmonics
     newWave = A(ii) * cos(2*pi*harmonicSeries(ii)*t) + B (ii) * sin(2*pi*harmonicSeries(ii) * t); % generate the wave for the ith harmonic
     output = output + newWave; % continuing addition of waves together
